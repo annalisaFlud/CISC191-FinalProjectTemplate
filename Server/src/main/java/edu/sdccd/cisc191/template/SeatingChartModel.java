@@ -34,7 +34,7 @@ public class SeatingChartModel {
         for (int i = 0; i < this.Array.size(); i++){
             if (this.Array.get(i).indexOf(input) != -1) {
                 output[0] = i;
-                output[1]= this.Array.indexOf(input);
+                output[1]= this.Array.get(i).indexOf(input);
                 break;
             }
         }

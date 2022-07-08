@@ -29,11 +29,17 @@ public class SeatingChartModelTest {
         assertEquals(seatingChartModel.setAtIndex(0, 0, "Andrew"), "Andrew");
     }
 
-//    @Test
-//    public void testFindIndexOf() {
-//        assertEquals(seatingChartModel.findIndexOf("Essie"), int[] answer = new int[2]);
-//
-//    }
+    @Test
+    public void testFindIndexOf() {
+        int[] answer = new int[2];
+        answer[0] = 1;
+        answer[1] = 0;
+        int[] output = seatingChartModel.findIndexOf("Essie");
+
+        assertEquals(output[0], answer[0]);
+        assertEquals(output[1], answer[1]);
+
+    }
 
     @Test
     public void testDeleteAtIndex(){
@@ -50,8 +56,9 @@ public class SeatingChartModelTest {
     @Test
     //todo : fix
     public void testShrink() {
+        assertEquals(seatingChartModel.getYDimension(), 2);
         seatingChartModel.shrink();
-        assertEquals(seatingChartModel.getAtIndex(0,1), "");
+        assertEquals(seatingChartModel.getYDimension(), 1);
     }
 
 
