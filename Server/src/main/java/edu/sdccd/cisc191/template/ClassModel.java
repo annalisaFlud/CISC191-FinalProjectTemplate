@@ -16,7 +16,6 @@ public class ClassModel {
     }
 
     //TODO : getAtIndex, setAtIndex, findIndexOf, printAll, deleteAtIndex, expand, shrink)
-    //method that displays what is
     public String getAtIndex(int index){
         return this.Array.get(index);
     }
@@ -41,7 +40,7 @@ public class ClassModel {
         return this.Array.size();
     }
     public int shrink() {
-        if (this.Array.size() < 0) {
+        if (this.Array.size() > 0) {
             this.Array.remove(this.Array.size() - 1);
             return this.Array.size();
         } else {
@@ -50,7 +49,7 @@ public class ClassModel {
     }
 
     public int getClassSize() {
-        return this.Array.size();
+        return Array.size();
     }
 
 }

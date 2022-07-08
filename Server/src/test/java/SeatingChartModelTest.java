@@ -61,6 +61,12 @@ public class SeatingChartModelTest {
         assertEquals(seatingChartModel.getYDimension(), 1);
     }
 
+    @Test
+    public void testToString() {
+        seatingChartModel.toString();
+        assertEquals(seatingChartModel.toString(), "[[Andy, Isa], [Essie, Bella]]");
+    }
+
 
 
 

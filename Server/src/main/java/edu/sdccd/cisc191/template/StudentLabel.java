@@ -18,7 +18,7 @@ public class StudentLabel extends Label {
         setPadding(LABEL_PADDING);
         this.row = row;
         this.col = col;
-
+        //sets default preferred height and width and default text
         setPrefHeight(100);
         setPrefWidth(100);
         setText(" ");

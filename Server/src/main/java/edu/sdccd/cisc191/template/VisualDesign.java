@@ -1,37 +1,32 @@
 
 package edu.sdccd.cisc191.template;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import jdk.internal.util.xml.impl.Input;
 
-import java.util.ArrayList;
-
-public class GUI extends Application {
+//creates class for app
+public class VisualDesign extends javafx.application.Application {
+    //fields needed for stage, canvas, and to access methods from class model
     private Stage primaryStage;
     private Canvas grid;
     private ClassModel classModel;
 
     public static void main(String[] args) {
         // launches app
-        Application.launch(args);
+        javafx.application.Application.launch(args);
     }
 
     @Override
+    //start method defines spacing and gridlines
     public void start(Stage primaryStage) throws Exception {
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -43,6 +38,7 @@ public class GUI extends Application {
         Scene scene = new Scene(grid, 300, 275);
         primaryStage.setScene(scene);
 
+        //creates index and input boxes user can input values into to perform methods
         TextField textFieldIndex = new TextField ();
         TextField textFieldInput = new TextField ();
         Label inputLabel = new Label();
@@ -56,8 +52,9 @@ public class GUI extends Application {
         Label output = new Label();
         output.setText("Output");
 
+        //button to find the student that is at a certain index in the list
         Button btn = new Button();
-        btn.setText("getIndexAt'");
+        btn.setText("Find student at __ position");
         btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -67,12 +64,13 @@ public class GUI extends Application {
                 } catch (Exception e){
                     value = "index invalid";
                 }
-                output.setText("getIndexAt: "+ value);
+                output.setText(value);
             }
         });
 
+        //button to add student given index and name
         Button btn1 = new Button();
-        btn1.setText("setAtIndex'");
+        btn1.setText("Add student");
         btn1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -86,8 +84,9 @@ public class GUI extends Application {
             }
         });
 
+        //button to find index given name string
         Button btn2 = new Button();
-        btn2.setText("findIndexOf'");
+        btn2.setText("Find position of given student");
         btn2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -97,12 +96,13 @@ public class GUI extends Application {
                 } catch (Exception e){
                     value = "input invalid";
                 }
-                output.setText(value);
+                output.setText("found at position: " + value);
             }
         });
 
+        //button to show all of the students in the class
         Button btn3 = new Button();
-        btn3.setText("toString");
+        btn3.setText("Class roster");
         btn3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -116,8 +116,9 @@ public class GUI extends Application {
             }
         });
 
+        //removes student at any order in the list given the index
         Button btn5 = new Button();
-        btn5.setText("deleteAtIndex'");
+        btn5.setText("remove student");
         btn5.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -127,12 +128,13 @@ public class GUI extends Application {
                 } catch (Exception e){
                     value = "index or invalid";
                 }
-                output.setText(value);
+                output.setText("student removed at: " + Integer.valueOf(textFieldIndex.getText()));
             }
         });
 
+        //expands class size by one
         Button btn4 = new Button();
-        btn4.setText("expand'");
+        btn4.setText("expand class size");
         btn4.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -142,12 +144,13 @@ public class GUI extends Application {
                 } catch (Exception e){
                     value = "index invalid";
                 }
-                output.setText(value);
+                output.setText("class size: " + String.valueOf(Integer.valueOf(classModel.getClassSize())));
             }
         });
 
+        //decreases class size by one
         Button btn6 = new Button();
-        btn6.setText("shrink'");
+        btn6.setText("shrink class size");
         btn6.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -157,10 +160,11 @@ public class GUI extends Application {
                 } catch (Exception e){
                     value = "index invalid";
                 }
-                output.setText(value);
+                output.setText("class size: " + String.valueOf(Integer.valueOf(classModel.getClassSize())));
             }
         });
 
+        //adds labels as well as buttons to the display
         grid.add(inputIndex,0,0);
         grid.add(inputLabel,0,1);
         grid.add(textFieldIndex,1,0);
@@ -174,11 +178,7 @@ public class GUI extends Application {
         grid.add(btn6,0,5);
         grid.add(output,1,5);
 
-
+        //shows all of the contents
         primaryStage.show();
-//        mainWindow();
     }
-//    public void mainWindow(){
-//        FXMLLoader loader = new FXMLLoader(GUI.class.getResource("/MainWindowView.fxml"));
-//    }
 }

@@ -27,8 +27,6 @@ public class ClassModelTest {
     @Test
     public void testFindIndexOf() {
         assertEquals(classModel.findIndexOf( "Andy"), 0);
-        //TODO: doesn't include stuff from testSetAtIndex , not sure if it should
-        //assertEquals(classModel.findIndexOf( "Essie"), 2);
     }
 
     @Test
@@ -43,13 +41,15 @@ public class ClassModelTest {
     }
 
     @Test
-    //todo is this right?
     public void testShrink() {
+        assertEquals(classModel.getAtIndex(1), "Isa");
         classModel.shrink();
         assertEquals(classModel.getAtIndex(2), "");
     }
-
-
-
+    @Test
+    public void testToString() {
+        classModel.toString();
+        assertEquals(classModel.toString(), "[Andy, Isa, , ]");
+    }
 
 }

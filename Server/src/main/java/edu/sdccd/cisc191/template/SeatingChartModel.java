@@ -40,14 +40,6 @@ public class SeatingChartModel {
         }
         return output;
     }
-    @Override
-    public String toString() {
-        String output = "";
-        for (ArrayList<String> row : this.Array) {
-            output.concat(row.toString() + "\n");
-        }
-        return output;
-    }
 
     public void deleteAtIndex(int xIndex, int yIndex) throws IndexOutOfBoundsException {
         this.Array.get(xIndex).set(yIndex,"");
@@ -69,11 +61,18 @@ public class SeatingChartModel {
             row.remove(row.size()-1);
         }
     }
+    public String toString(){
+        return this.Array.toString();
+    }
 
     public int getXDimension() {
         return this.Array.size();
     }
     public int getYDimension() {
         return this.Array.get(0).size();
+    }
+
+    public int getClassSize() {
+        return Array.size();
     }
 }

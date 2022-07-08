@@ -14,8 +14,7 @@ public class SeatingChartConsole {
         boolean quit = false;
         while (!quit) {
             System.out.println("What command would you like to call on the array list commands:");
-            //todo : do i need class size
-            // System.out.println("current class size: " + seatingChartModel.getClassSize());
+            System.out.println("current class size: " + seatingChartModel.getClassSize());
             System.out.println("Commands are: getAtIndex, setAtIndex, findIndexOf, printAll, deleteAtIndex, expand, shrink, quit");
 
             //TODO : getAtIndex, setAtIndex, findIndexOf, printAll, deleteAtIndex, expand, shrink)
