@@ -1,6 +1,7 @@
 package edu.sdccd.cisc191.template;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class SeatingChartModel {
     private ArrayList<ArrayList<String>> Array;
@@ -18,34 +19,36 @@ public class SeatingChartModel {
         this.Array.add(row1);
     }
 
-    //TODO : getAtIndex, setAtIndex, findIndexOf, printAll, deleteAtIndex, expand, shrink)
-    //method that displays what is
-    public String getAtIndex(int xIndex, int yIndex){
+    //TODO : getAtIndex, setAtIndex, findIndexOf, printAll, deleteAtIndex, expand, shrink, shuffle seating chart)
+    public String getAtIndex(int xIndex, int yIndex) {
         return this.Array.get(xIndex).get(yIndex);
     }
-    public String setAtIndex(int xIndex, int yIndex, String input) throws IndexOutOfBoundsException{
-        this.Array.get(xIndex).set(yIndex,input);
+
+    public String setAtIndex(int xIndex, int yIndex, String input) throws IndexOutOfBoundsException {
+        this.Array.get(xIndex).set(yIndex, input);
         return input;
     }
-    public int[] findIndexOf(String input){
+
+    public String findIndexOf(String input) {
         int[] output = new int[2];
-        output[0]=-1;
-        output[1]=-1;
-        for (int i = 0; i < this.Array.size(); i++){
+        output[0] = -1;
+        output[1] = -1;
+        for (int i = 0; i < this.Array.size(); i++) {
             if (this.Array.get(i).indexOf(input) != -1) {
                 output[0] = i;
-                output[1]= this.Array.get(i).indexOf(input);
+                output[1] = this.Array.get(i).indexOf(input);
                 break;
             }
         }
-        return output;
+        return Integer.valueOf(output[0]) + ", " + Integer.valueOf(output[1]);
     }
 
     public void deleteAtIndex(int xIndex, int yIndex) throws IndexOutOfBoundsException {
-        this.Array.get(xIndex).set(yIndex,"");
+        this.Array.get(xIndex).set(yIndex, "");
     }
+
     public void expand() {
-        ArrayList<String> newRow= new ArrayList<String>();
+        ArrayList<String> newRow = new ArrayList<String>();
         for (int i = 0; i < this.getYDimension(); i++) {
             newRow.add("");
         }
@@ -57,22 +60,29 @@ public class SeatingChartModel {
 
     public void shrink() {
         this.Array.remove(this.Array.size() - 1);
-        for  (ArrayList<String> row : this.Array) {
-            row.remove(row.size()-1);
+        for (ArrayList<String> row : this.Array) {
+            row.remove(row.size() - 1);
         }
     }
-    public String toString(){
+
+    public String toString() {
         return this.Array.toString();
     }
 
     public int getXDimension() {
         return this.Array.size();
     }
+
     public int getYDimension() {
         return this.Array.get(0).size();
     }
 
     public int getClassSize() {
-        return Array.size();
+        return this.Array.size();
+    }
+
+    public ArrayList<ArrayList<String>> shuffleSeatingChart() {
+        Collections.shuffle(this.Array);
+        return this.Array;
     }
 }
